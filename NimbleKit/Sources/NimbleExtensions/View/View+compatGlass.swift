@@ -8,11 +8,11 @@
 import SwiftUI
 
 extension View {
-    /// Applies the glass background effect when available.
+    /// Applies a translucent background similar to visionOS.
     @ViewBuilder
     public func compatGlassBackground() -> some View {
-        if #available(iOS 19.0, *) {
-            self.glassBackgroundEffect()
+        if #available(iOS 15.0, *) {
+            self.background(.ultraThinMaterial)
         } else {
             self
         }
