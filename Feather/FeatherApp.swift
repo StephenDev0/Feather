@@ -38,15 +38,17 @@ struct FeatherApp: App {
 				}
 			}
 			// dear god help me
-			.onAppear {
-				if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "Feather.userInterfaceStyle")) {
-					UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
-				}
-				
-				UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "Feather.userTintColor") ?? "#B496DC"))
-			}
-		}
-	}
+                        .onAppear {
+                                if let style = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "Feather.userInterfaceStyle")) {
+                                        UIApplication.topViewController()?.view.window?.overrideUserInterfaceStyle = style
+                                }
+
+                                UIApplication.topViewController()?.view.window?.tintColor = UIColor(Color(hex: UserDefaults.standard.string(forKey: "Feather.userTintColor") ?? "#B496DC"))
+
+                                FR.ensureDefaultSource()
+                        }
+                }
+        }
 	
 	private func _handleURL(_ url: URL) {
 		if url.scheme == "feather" {
@@ -62,12 +64,12 @@ struct FeatherApp: App {
 			}
 		} else {
 			if url.pathExtension == "ipa" || url.pathExtension == "tipa" {
-				if FileManager.default.isFileFromFileProvider(at: url) {
-					guard url.startAccessingSecurityScopedResource() else { return }
-					FR.handlePackageFile(url) { _ in }
-				} else {
-					FR.handlePackageFile(url) { _ in }
-				}
+                                if FileManager.default.isFileFromFileProvider(at: url) {
+                                        guard url.startAccessingSecurityScopedResource() else { return }
+                                        FR.handlePackageFile(url) { _, _ in }
+                                } else {
+                                        FR.handlePackageFile(url) { _, _ in }
+                                }
 				
 				return
 			}

@@ -13,31 +13,45 @@ import AltSourceKit
 import IDeviceSwift
 
 enum FR {
-	static func handlePackageFile(
-		_ ipa: URL,
-		download: Download? = nil,
-		completion: @escaping (Error?) -> Void
-	) {
-		Task.detached {
-			let handler = AppFileHandler(file: ipa, download: download)
+       /// Default repository used for the store
+       static let defaultSourceURL = "https://raw.githubusercontent.com/khcrysalis/Feather/main/app-repo.json"
+
+       /// Ensure the default repository exists in storage
+       static func ensureDefaultSource() {
+               if Storage.shared.getSources().isEmpty {
+                       handleSource(defaultSourceURL) { }
+               }
+       }
+       static func handlePackageFile(
+               _ ipa: URL,
+               uuid: String? = nil,
+               download: Download? = nil,
+               completion: @escaping (String?, Error?) -> Void
+       ) {
+               Task.detached {
+                       let handler = AppFileHandler(
+                               file: ipa,
+                               download: download,
+                               uuid: uuid
+                       )
 			
 			do {
 				try await handler.copy()
 				try await handler.extract()
 				try await handler.move()
-				try await handler.addToDatabase()
-				
-				await MainActor.run {
-					completion(nil)
-				}
-			} catch {
-				try await handler.clean()
-				await MainActor.run {
-					completion(error)
-				}
-			}
-		}
-	}
+                                try await handler.addToDatabase()
+
+                                await MainActor.run {
+                                        completion(handler.uuid, nil)
+                                }
+                        } catch {
+                                try await handler.clean()
+                                await MainActor.run {
+                                        completion(nil, error)
+                                }
+                        }
+                }
+        }
 	
 	static func signPackageFile(
 		_ app: AppInfoPresentable,

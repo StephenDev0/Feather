@@ -4,15 +4,17 @@
 [![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/khcrysalis/feather/total)](https://github.com/khcrysalis/feather/releases)
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 
-This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. 
+This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device.
 
 This is an entirely stock application and uses built-in features to be able to do this!
+
+All applications are provided through a single official repository bundled with the app.
 
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
 
 ### Features
 - Install applications via [`idevice`](https://github.com/jkcoxson/idevice) or using a [`server`](https://github.com/vapor/vapor).
-- Inspect and manage imported apps, certificates, and altstore sources.
+- Browse and install apps directly from the official Feather store.
 - Globally configurable signing options, and even supports Adhoc signing.
 - Advanced tweak support, using [Ellekit](https://github.com/tealbathingsuit/ellekit) for injection. Supports `.deb` and `.dylib` files.
 - No tracking or analytics, ensuring user privacy.
