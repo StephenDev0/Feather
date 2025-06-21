@@ -15,14 +15,15 @@ public struct NBSheetButton: View {
 	}
 	
 	public var body: some View {
-		Text(_title)
-			.frame(maxWidth: .infinity, maxHeight: .infinity)
-			.background(Color.accentColor)
-			.foregroundColor(.white)
-			.clipShape(
-				RoundedRectangle(cornerRadius: 12, style: .continuous)
-			)
-			.bold()
+                Text(_title)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.ultraThinMaterial)
+                        .compatGlassBackground()
+                        .foregroundStyle(.accent)
+                        .clipShape(
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        )
+                        .bold()
 			.frame(height: 50)
 			.padding()
 	}

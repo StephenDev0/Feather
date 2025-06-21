@@ -18,11 +18,13 @@ public struct NBGrid<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	public var body: some View {
-		ScrollView {
-			LazyVGrid(columns: _adaptiveColumns, spacing: 16) {
-				_content
-			}.padding(.horizontal)
-		}
-	}
+        public var body: some View {
+                ScrollView {
+                        LazyVGrid(columns: _adaptiveColumns, spacing: 16) {
+                                _content
+                        }
+                        .padding(.horizontal)
+                }
+                .compatGlassBackground()
+        }
 }

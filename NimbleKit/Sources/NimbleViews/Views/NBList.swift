@@ -30,20 +30,21 @@ public struct NBList<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	public var body: some View {
-		Group {
-			switch _type {
-			case .form:
-				Form {
-					_content
-				}
-			case .list:
-				List {
-					_content
-				}
-			}
-		}
-		.navigationTitle(_title)
-		.navigationBarTitleDisplayMode(_mode)
-	}
+        public var body: some View {
+                Group {
+                        switch _type {
+                        case .form:
+                                Form {
+                                        _content
+                                }
+                        case .list:
+                                List {
+                                        _content
+                                }
+                        }
+                }
+                .navigationTitle(_title)
+                .navigationBarTitleDisplayMode(_mode)
+                .compatGlassBackground()
+        }
 }

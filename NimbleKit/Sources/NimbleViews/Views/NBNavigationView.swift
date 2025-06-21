@@ -22,11 +22,12 @@ public struct NBNavigationView<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	public var body: some View {
-		NavigationStack {
-			_content
-				.navigationTitle(_title)
-				.navigationBarTitleDisplayMode(_mode)
-		}
-	}
+        public var body: some View {
+                NavigationStack {
+                        _content
+                                .navigationTitle(_title)
+                                .navigationBarTitleDisplayMode(_mode)
+                }
+                .compatGlassBackground()
+        }
 }

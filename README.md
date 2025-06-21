@@ -10,6 +10,8 @@ This is an entirely stock application and uses built-in features to be able to d
 
 All applications are provided through a single official repository bundled with the app.
 
+The interface now embraces Apple's Liquid Glass look inspired by visionOS, with translucent backgrounds across the app.
+
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
 
 ### Features
