@@ -19,7 +19,7 @@ public struct NBSheetButton: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.ultraThinMaterial)
                         .compatGlassBackground()
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
                         .clipShape(
                                 RoundedRectangle(cornerRadius: 12, style: .continuous)
                         )
