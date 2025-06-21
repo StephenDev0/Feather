@@ -16,16 +16,18 @@ public struct NBListAdaptable<Content>: View where Content: View {
 		self._content = content()
 	}
 	
-	public var body: some View {
-		if horizontalSizeClass == .compact {
-			List {
-				_content
-			}
-			.listStyle(.plain)
-		} else {
-			NBGrid {
-				_content
-			}
-		}
-	}
+        public var body: some View {
+                if horizontalSizeClass == .compact {
+                        List {
+                                _content
+                        }
+                        .listStyle(.plain)
+                        .compatGlassBackground()
+                } else {
+                        NBGrid {
+                                _content
+                        }
+                        .compatGlassBackground()
+                }
+        }
 }

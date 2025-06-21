@@ -33,12 +33,18 @@ extension Storage {
 		}
 	}
 	
-	func getCertificate(from app: AppInfoPresentable) -> CertificatePair? {
-		if let signed = app as? Signed {
-			return signed.certificate
-		}
-		return nil
-	}
+        func getCertificate(from app: AppInfoPresentable) -> CertificatePair? {
+                if let signed = app as? Signed {
+                        return signed.certificate
+                }
+                return nil
+        }
+
+        func getImported(by uuid: String) -> Imported? {
+                let request: NSFetchRequest<Imported> = Imported.fetchRequest()
+                request.predicate = NSPredicate(format: "uuid == %@", uuid)
+                return (try? context.fetch(request))?.first
+        }
 }
 
 // MARK: - Helpers

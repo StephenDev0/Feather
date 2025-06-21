@@ -13,15 +13,7 @@ import NukeUI
 struct ExtendedTabbarView: View {
 	@Environment(\.horizontalSizeClass) var horizontalSizeClass
 	@AppStorage("Feather.tabCustomization") var customization = TabViewCustomization()
-	@StateObject var viewModel = SourcesViewModel.shared
-	
-	@State private var _isAddingPresenting = false
-	
-	@FetchRequest(
-		entity: AltSource.entity(),
-		sortDescriptors: [NSSortDescriptor(keyPath: \AltSource.name, ascending: true)],
-		animation: .snappy
-	) private var _sources: FetchedResults<AltSource>
+        @StateObject var viewModel = SourcesViewModel.shared
 		
 	var body: some View {
 		TabView {
@@ -31,53 +23,20 @@ struct ExtendedTabbarView: View {
 				}
 			}
 			
-			ForEach(TabEnum.customizableTabs, id: \.hashValue) { tab in
-				Tab(tab.title, systemImage: tab.icon) {
-					TabEnum.view(for: tab)
-				}
-				.customizationID("tab.\(tab.rawValue)")
-				.defaultVisibility(.hidden, for: .tabBar)
-				.customizationBehavior(.reorderable, for: .tabBar, .sidebar)
-				.hidden(horizontalSizeClass == .compact)
-			}
-			
-			TabSection("Sources") {
-				Tab(.localized("All Repositories"), systemImage: "globe.desk") {
-					NavigationStack {
-						SourceAppsView(object: Array(_sources), viewModel: viewModel)
-					}
-				}
-				
-				ForEach(_sources, id: \.identifier) { source in
-					Tab {
-						NavigationStack {
-							SourceAppsView(object: [source], viewModel: viewModel)
-						}
-					} label: {
-						_icon(source.name ?? .localized("Unknown"), iconUrl: source.iconURL)
-					}
-					.swipeActions {
-						Button(.localized("Delete"), systemImage: "trash", role: .destructive) {
-							Storage.shared.deleteSource(for: source)
-						}
-					}
-				}
-			}
-			.sectionActions {
-				Button(.localized("Add Source"), systemImage: "plus") {
-					_isAddingPresenting = true
-				}
-			}
-			.defaultVisibility(.hidden, for: .tabBar)
-			.hidden(horizontalSizeClass == .compact)
-		}
-		.tabViewStyle(.sidebarAdaptable)
-		.tabViewCustomization($customization)
-		.sheet(isPresented: $_isAddingPresenting) {
-			SourcesAddView()
-				.presentationDetents([.medium])
-		}
-	}
+                        ForEach(TabEnum.customizableTabs, id: \.hashValue) { tab in
+                                Tab(tab.title, systemImage: tab.icon) {
+                                        TabEnum.view(for: tab)
+                                }
+                                .customizationID("tab.\(tab.rawValue)")
+                                .defaultVisibility(.hidden, for: .tabBar)
+                                .customizationBehavior(.reorderable, for: .tabBar, .sidebar)
+                                .hidden(horizontalSizeClass == .compact)
+                        }
+                }
+                .tabViewStyle(.sidebarAdaptable)
+                .tabViewCustomization($customization)
+                
+        }
 	
 	@ViewBuilder
 	private func _icon(_ title: String, iconUrl: URL?) -> some View {
