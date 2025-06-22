@@ -12,11 +12,13 @@ All applications are provided through a single official repository bundled with 
 
 The interface now embraces Apple's Liquid Glass look inspired by visionOS, with translucent backgrounds across the app.
 
+A redesigned Store showcases apps with large cards just like the Apple App Store.
+
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="Images/Image-dark.png"><source media="(prefers-color-scheme: light)" srcset="Images/Image-light.png"><img alt="Pointercrate-pocket." src="Images/Image-light.png"></picture></p>
 
 ### Features
 - Install applications via [`idevice`](https://github.com/jkcoxson/idevice) or using a [`server`](https://github.com/vapor/vapor).
-- Browse a single unified store with detailed app pages and one-tap installs.
+- Browse a single unified store with App Store–style cards, detailed app pages and one-tap installs.
 - Globally configurable signing options, and even supports Adhoc signing.
 - Advanced tweak support, using [Ellekit](https://github.com/tealbathingsuit/ellekit) for injection. Supports `.deb` and `.dylib` files.
 - No tracking or analytics, ensuring user privacy.

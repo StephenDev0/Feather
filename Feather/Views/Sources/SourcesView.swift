@@ -16,8 +16,7 @@ struct StoreView: View {
 	
 	@AppStorage("Feather.shouldStar") private var _shouldStar: Int = 0
 	
-	@StateObject var viewModel = SourcesViewModel.shared
-        @State private var _searchText = ""
+        @StateObject var viewModel = SourcesViewModel.shared
 	
         @FetchRequest(
                 entity: AltSource.entity(),
@@ -28,8 +27,9 @@ struct StoreView: View {
 	// MARK: Body
         var body: some View {
                 NBNavigationView(.localized("Store")) {
-                        if let source = _sources.first {
-                                SourceAppsView(object: [source], viewModel: viewModel)
+                        if let source = _sources.first,
+                           let repo = viewModel.sources[source] {
+                                StoreHomeView(repository: repo)
                         } else {
                                 ProgressView()
                         }
