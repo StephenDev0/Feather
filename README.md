@@ -16,7 +16,7 @@ The interface now embraces Apple's Liquid Glass look inspired by visionOS, with 
 
 ### Features
 - Install applications via [`idevice`](https://github.com/jkcoxson/idevice) or using a [`server`](https://github.com/vapor/vapor).
-- Browse and install apps directly from the official Feather store.
+- Browse a single unified store with detailed app pages and one-tap installs.
 - Globally configurable signing options, and even supports Adhoc signing.
 - Advanced tweak support, using [Ellekit](https://github.com/tealbathingsuit/ellekit) for injection. Supports `.deb` and `.dylib` files.
 - No tracking or analytics, ensuring user privacy.
