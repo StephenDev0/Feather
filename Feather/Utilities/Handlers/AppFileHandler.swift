@@ -11,25 +11,28 @@ import SwiftUI
 import OSLog
 
 final class AppFileHandler: NSObject, @unchecked Sendable {
-	private let _fileManager = FileManager.default
-	private let _uuid = UUID().uuidString
+        private let _fileManager = FileManager.default
+        private let _uuid: String
 	private let _uniqueWorkDir: URL
-	var uniqueWorkDirPayload: URL?
+        var uniqueWorkDirPayload: URL?
+        var uuid: String { _uuid }
 
 	private var _ipa: URL
 	private let _install: Bool
 	private let _download: Download?
 	
-	init(
-		file ipa: URL,
-		install: Bool = false,
-		download: Download? = nil
-	) {
-		self._ipa = ipa
-		self._install = install
-		self._download = download
-		self._uniqueWorkDir = _fileManager.temporaryDirectory
-			.appendingPathComponent("FeatherImport_\(_uuid)", isDirectory: true)
+        init(
+                file ipa: URL,
+                install: Bool = false,
+                download: Download? = nil,
+                uuid: String? = nil
+        ) {
+                self._ipa = ipa
+                self._install = install
+                self._download = download
+                self._uuid = uuid ?? UUID().uuidString
+                self._uniqueWorkDir = _fileManager.temporaryDirectory
+                        .appendingPathComponent("FeatherImport_\(_uuid)", isDirectory: true)
 		
 		super.init()
 		Logger.misc.debug("Import initiated for: \(self._ipa.lastPathComponent) with ID: \(self._uuid)")

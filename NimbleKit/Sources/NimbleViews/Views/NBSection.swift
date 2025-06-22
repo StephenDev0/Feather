@@ -67,8 +67,9 @@ where 	Content: View,
 							.contentTransition(.numericText())
                             .padding(.horizontal, 8)
 							.padding(.vertical, 4.4)
-							.background(Color(uiColor: .quaternarySystemFill))
-							.clipShape(Capsule())
+                                                        .background(.ultraThinMaterial)
+                                                        .compatGlassBackground()
+                                                        .clipShape(Capsule())
 					}
 				}
 				.offset(y: 2)

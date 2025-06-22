@@ -125,20 +125,26 @@ class DownloadManager: NSObject, ObservableObject {
 
 extension DownloadManager: URLSessionDownloadDelegate {
 	
-	func handlePachageFile(url: URL, dl: Download) throws {
-		FR.handlePackageFile(url, download: dl) { err in
-			if err != nil {
-				let generator = UINotificationFeedbackGenerator()
-				generator.notificationOccurred(.error)
-			}
-			
-			DispatchQueue.main.async {
-				if let index = DownloadManager.shared.getDownloadIndex(by: dl.id) {
-					DownloadManager.shared.downloads.remove(at: index)
-				}
-			}
-		}
-	}
+        func handlePachageFile(url: URL, dl: Download) throws {
+                FR.handlePackageFile(url, uuid: dl.id, download: dl) { uuid, err in
+                        if err != nil {
+                                let generator = UINotificationFeedbackGenerator()
+                                generator.notificationOccurred(.error)
+                        }
+
+                        DispatchQueue.main.async {
+                                if let index = DownloadManager.shared.getDownloadIndex(by: dl.id) {
+                                        DownloadManager.shared.downloads.remove(at: index)
+                                }
+                                if let uuid {
+                                        NotificationCenter.default.post(
+                                                name: .downloadDidFinish,
+                                                object: uuid
+                                        )
+                                }
+                        }
+                }
+        }
 	
 	func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
 		guard let download = getDownloadTask(by: downloadTask) else { return }

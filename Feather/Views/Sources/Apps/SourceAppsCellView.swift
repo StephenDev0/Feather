@@ -9,6 +9,8 @@ import SwiftUI
 import AltSourceKit
 import NimbleViews
 import Combine
+import Foundation
+import CoreData
 
 // thats a whole pharaghraph of codes
 struct SourceAppsCellView: View {
@@ -16,7 +18,9 @@ struct SourceAppsCellView: View {
 	@AppStorage("Feather.storeCellAppearance") private var _storeCellAppearance: Int = 0
 	
 	@State private var _downloadProgress: Double = 0
-	@State var cancellable: AnyCancellable? // Combine
+    @State var cancellable: AnyCancellable? // Combine
+    @State private var _presentInstall: Imported?
+    @State private var _presentDetails = false
 	
 	var currentDownload: Download? {
 		downloadManager.getDownload(by: app.currentUniqueId)
@@ -24,41 +28,60 @@ struct SourceAppsCellView: View {
 	
 	var app: ASRepository.App
 	
-	var body: some View {
-		VStack {
-			HStack(spacing: 2) {
-				FRIconCellView(
-					title: app.currentName,
-					subtitle: _appDescription(app: app),
-					iconUrl: app.iconURL
-				)
-				_download()
-			}
-			
-			if _storeCellAppearance != 0 {
-				Text(app.localizedDescription ?? "")
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.font(.subheadline)
-					.foregroundStyle(.secondary)
-					.lineLimit(18)
-					.padding(.top, 2)
-			}
-		}
-		.padding(.vertical, {
-			if #available(iOS 19, *) {
-				return 6
-			} else {
-				return 0
-			}
+        var body: some View {
+                Button {
+                        _presentDetails = true
+                } label: {
+                        VStack {
+                                HStack(spacing: 2) {
+                                        FRIconCellView(
+                                                title: app.currentName,
+                                                subtitle: _appDescription(app: app),
+                                                iconUrl: app.iconURL
+                                        )
+                                        _download()
+                                }
+
+                                if _storeCellAppearance != 0 {
+                                        Text(app.localizedDescription ?? "")
+                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .font(.subheadline)
+                                                .foregroundStyle(.secondary)
+                                                .lineLimit(18)
+                                                .padding(.top, 2)
+                                }
+                        }
+                }
+                .buttonStyle(.plain)
+                .padding(.vertical, {
+                        if #available(iOS 19, *) {
+                                return 6
+                        } else {
+                                return 0
+                        }
 		}())
-		.onAppear(perform: _setupDownloadObserver)
-		.onDisappear {
-			cancellable?.cancel()
-		}
-		.onChange(of: downloadManager.downloads.description) { _ in
-			_setupDownloadObserver()
-		}
-	}
+                .onAppear(perform: _setupDownloadObserver)
+                .onDisappear {
+                        cancellable?.cancel()
+                }
+                .onChange(of: downloadManager.downloads.description) { _ in
+                        _setupDownloadObserver()
+                }
+                .onReceive(NotificationCenter.default.publisher(for: .downloadDidFinish)) { notif in
+                        guard let uuid = notif.object as? String else { return }
+                        guard uuid == app.currentUniqueId else { return }
+                        if let imported = Storage.shared.getImported(by: uuid) {
+                                _presentInstall = imported
+                        }
+                }
+                .sheet(item: $_presentInstall) { item in
+                        InstallPreviewView(app: item)
+                                .presentationDetents([.height(200)])
+                }
+                .sheet(isPresented: $_presentDetails) {
+                        StoreAppInfoView(app: app)
+                }
+        }
 	
 	private func _setupDownloadObserver() {
 		cancellable?.cancel()

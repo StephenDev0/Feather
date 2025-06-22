@@ -31,16 +31,18 @@ public struct NBButton: View {
 			Image(systemName: _icon)
 				.font(.caption).bold()
 				.frame(width: 29, height: 29)
-				.background(Color(uiColor: .quaternarySystemFill))
-				.clipShape(Circle())
+                                .background(.ultraThinMaterial)
+                                .compatGlassBackground()
+                                .clipShape(Circle())
 			
 		case .text:
 			Text(_title)
 				.font(.footnote).bold()
 				.padding(.horizontal, _horizontalPadding)
 				.frame(height: 29)
-				.background(Color(uiColor: .quaternarySystemFill))
-				.clipShape(Capsule())
+                                .background(.ultraThinMaterial)
+                                .compatGlassBackground()
+                                .clipShape(Capsule())
 		}
     }
 }
