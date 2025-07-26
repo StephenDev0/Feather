@@ -20,12 +20,11 @@ final class SigningHandler: NSObject {
 	private var _app: AppInfoPresentable
 	private var _options: Options
 	private let _uniqueWorkDir: URL
-	// the options struct is not gonna decode these so
-	// we're just going to do this. If appicon is not
-	// specified, we're not going to modify the app
-	// icon. If the cert pair is not there, fallback
-	// to adhoc signing (if the option is on, otherwise
-	// throw an error
+        // the options struct is not gonna decode these so
+        // we're just going to do this. If appicon is not
+        // specified, we're not going to modify the app
+        // icon. A certificate must be specified or an
+        // error will be thrown.
 	var appIcon: UIImage?
 	var appCertificate: CertificatePair?
 	
@@ -106,8 +105,6 @@ final class SigningHandler: NSObject {
 			appCertificate != nil
 		{
 			try await handler.sign()
-//		} else if _options.signingOption == .adhoc {
-//			try await handler.adhocSign()
 		} else if _options.signingOption == .onlyModify {
 			//
 		} else {

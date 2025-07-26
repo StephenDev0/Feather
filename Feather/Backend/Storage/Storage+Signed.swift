@@ -29,8 +29,8 @@ extension Storage {
 		new.uuid = uuid
 		new.source = source
 		new.date = Date()
-		// if nil, we assume adhoc or certificate was deleted afterwards
-		new.certificate = certificate
+                // if nil, we assume the certificate was deleted afterwards
+                new.certificate = certificate
 		// could possibly be nil, but thats fine.
 		new.identifier = appIdentifier
 		new.name = appName

@@ -39,21 +39,27 @@ struct AboutView: View {
 						Image(uiImage: AppIconView.altImage(UIApplication.shared.alternateIconName))
 							.appIconStyle(size: 72)
 						
-						Text(Bundle.main.exec)
-							.font(.largeTitle)
-							.bold()
-							.foregroundStyle(Color.accentColor)
-						
-						HStack(spacing: 4) {
-							Text(.localized("Version"))
-							Text(Bundle.main.version)
-						}
-						.font(.footnote)
-						.foregroundStyle(.secondary)
-					}
-				}
-				.frame(maxWidth: .infinity)
-				.listRowBackground(EmptyView())
+                                                Text(Bundle.main.name)
+                                                        .font(.largeTitle)
+                                                        .bold()
+                                                        .foregroundStyle(Color.accentColor)
+
+                                                HStack(spacing: 4) {
+                                                        Text(.localized("Version"))
+                                                        Text(Bundle.main.version)
+                                                }
+                                                .font(.footnote)
+                                                .foregroundStyle(.secondary)
+
+                                                Text(.localized("Developer Tool Disclaimer"))
+                                                        .font(.footnote)
+                                                        .multilineTextAlignment(.center)
+                                                        .foregroundStyle(.secondary)
+                                                        .padding(.top, 2)
+                                        }
+                                }
+                                .frame(maxWidth: .infinity)
+                                .listRowBackground(EmptyView())
 				
 				NBSection(.localized("Credits")) {
 					ForEach(_credits, id: \.github) { credit in

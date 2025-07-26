@@ -1,6 +1,6 @@
 # Contributing
 
-Feather is a sideloading app meant to be used on stock versions, to keep compatibility we have to utililize stock features to keep it working. As such, we have specific contribution rules in place to maintain this and Feathers integrity.
+Feather: Stik Edition is a developer tool for testing apps on stock devices. To keep compatibility we utilize only stock features. As such, we have specific contribution rules in place to maintain this and Feather's integrity.
 
 Any contributions should follow the [Code of Conduct](./CODE_OF_CONDUCT.md).
 

@@ -1,5 +1,5 @@
 name: Create Blank Issue
-description: Blank issue report for Feather. Use this for anything other than a bug or feature request.
+description: Blank issue report for Feather: Stik Edition, our developer testing tool. Use this for anything other than a bug or feature request.
 
 body:
   - type: markdown

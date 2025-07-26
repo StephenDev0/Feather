@@ -194,14 +194,11 @@ struct Options: Codable, Equatable {
 	enum SigningOption: String, Codable, CaseIterable, LocalizedDescribable {
 		case `default`
 		case onlyModify
-//		case adhoc
 
 		var localizedDescription: String {
 			switch self {
 			case .default: .localized("Default")
 			case .onlyModify: .localized("Modify")
-//			case .adhoc: .localized("Ad-hoc")
-			}
 		}
 	}
 	

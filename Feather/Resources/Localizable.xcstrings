@@ -587,7 +587,7 @@
       }
     },
     "About %@" : {
-      "comment" : "About Feather",
+      "comment" : "About Feather: Stik Edition",
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -618,6 +618,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Về %@"
+          }
+        }
+      }
+    },
+    "Developer Tool Disclaimer" : {
+      "comment" : "Explain that the app is only for deploying and testing your own apps",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feather: Stik Edition is a developer tool for deploying and testing your own apps. It does not support sideloading third-party content."
           }
         }
       }
@@ -9949,7 +9961,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Server (Recommended):\nUses a locally hosted server and itms-services:// to install applications.\n\nIDevice (advanced):\nUses a VPN and a pairing file. Writes to AFC and manually calls installd, while monitoring install progress by using a callback\nAdvantage: It is very reliable, does not need SSL certificates or a externally hosted server. Rather, works similarly to a computer."
+            "value" : "Server (Recommended):\nUses a locally hosted server to deploy developer builds via itms-services://.\n\nIDevice (advanced):\nUses a VPN and a pairing file to talk directly to installd, mirroring Xcode's on-device deployment.\nAdvantage: Very reliable and requires no external server or SSL certificates."
           }
         },
         "it" : {
@@ -11336,7 +11348,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The only supported repositories are AltStore repositories."
+            "value" : "Feather: Stik Edition only accepts developer sources for testing your own apps."
           }
         },
         "it" : {

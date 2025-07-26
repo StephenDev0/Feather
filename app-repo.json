@@ -5,12 +5,12 @@
   "website": "https://github.com/khcrysalis/Feather",
   "apps": [
     {
-      "name": "Feather",
+      "name": "Feather: Stik Edition",
       "bundleIdentifier": "thewonderofyou.Feather",
       "developerName": "Samara",
       "iconURL": "https://github.com/khcrysalis/Feather/blob/v1.x/iOS/Resources/Icons/Main/Mac@3x.png?raw=true",
-      "localizedDescription": "Feather is a free on-device iOS application manager/installer built with UIKit for quality.",
-      "subtitle": "On-device signing application",
+      "localizedDescription": "Feather: Stik Edition is a developer tool that helps you sign and test iOS apps on device.",
+      "subtitle": "Developer testing utility",
       "tintColor": "848ef9",
       "versions": [
         {
@@ -45,9 +45,9 @@
       "notify": false
     },
     {
-      "title": "About Feather",
+      "title": "About Feather: Stik Edition",
       "identifier": "feather-about",
-      "caption": "Feather allows you to use an Apple Developer Account to sign and install applications on device without needing a computer on stock iOS versions, while allowing easy management with its applications.\n\nDue to limitations, it's hard to tell if the application is actually installed, so you will need to keep track of whats on your device. This is an entirely stock application and uses built-in features to be able to do this!",
+      "caption": "Feather: Stik Edition lets developers sign and run test builds on device. Use your developer account to deploy apps and validate them without a computer.",
       "tintColor": "8A28F7",
       "imageURL": "https://media.idownloadblog.com/wp-content/uploads/2024/08/Feather-on-device-signing-UI-app.jpg",
       "url": "https://github.com/khcrysalis/feather",
