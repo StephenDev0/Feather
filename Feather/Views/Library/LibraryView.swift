@@ -124,7 +124,7 @@ struct LibraryView: View {
 				{
 					if #available(iOS 17, *) {
 						ContentUnavailableView {
-							Label(.localized("No Apps"), systemImage: "questionmark.app.fill")
+							Label(.localized("No self developed developer app files"), systemImage: "questionmark.app.fill")
 						} description: {
 							Text(.localized("Get started by importing your first self developed developer app file."))
 						} actions: {
