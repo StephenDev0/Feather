@@ -47,10 +47,7 @@ struct SigningView: View {
     var body: some View {
 		NBNavigationView(app.name ?? .localized("Unknown"), displayMode: .inline) {
 			Form {
-				_customizationOptions(for: app)
-				_cert()
-				_customizationProperties(for: app)
-				
+    
 				// horrible
 				Rectangle()
 					.foregroundStyle(.clear)

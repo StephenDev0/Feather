@@ -30,17 +30,7 @@ struct ExtendedTabbarView: View {
 					TabEnum.view(for: tab)
 				}
 			}
-			
-			ForEach(TabEnum.customizableTabs, id: \.hashValue) { tab in
-				Tab(tab.title, systemImage: tab.icon) {
-					TabEnum.view(for: tab)
-				}
-				.customizationID("tab.\(tab.rawValue)")
-				.defaultVisibility(.hidden, for: .tabBar)
-				.customizationBehavior(.reorderable, for: .tabBar, .sidebar)
-				.hidden(horizontalSizeClass == .compact)
-			}
-			
+						
 			TabSection("Sources") {
 				Tab(.localized("All Repositories"), systemImage: "globe.desk") {
 					NavigationStack {

@@ -14,7 +14,7 @@ struct InstallPreviewView: View {
 	@Environment(\.dismiss) var dismiss
 
 	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
-	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 0
+	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 1
 	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	@State private var _isWebviewPresenting = false
 	

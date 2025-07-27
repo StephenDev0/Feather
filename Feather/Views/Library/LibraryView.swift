@@ -61,7 +61,7 @@ struct LibraryView: View {
 	
 	// MARK: Body
     var body: some View {
-		NBNavigationView(.localized("Library")) {
+		NBNavigationView(.localized("Manage")) {
 			NBListAdaptable {
 				if
 					!_filteredSignedApps.isEmpty ||
@@ -126,7 +126,7 @@ struct LibraryView: View {
 						ContentUnavailableView {
 							Label(.localized("No Apps"), systemImage: "questionmark.app.fill")
 						} description: {
-							Text(.localized("Get started by importing your first IPA file."))
+							Text(.localized("Get started by importing your first self developed developer app file."))
 						} actions: {
 							Menu {
 								_importActions()
@@ -213,9 +213,6 @@ extension LibraryView {
 	private func _importActions() -> some View {
 		Button(.localized("Import from Files"), systemImage: "folder") {
 			_isImportingPresenting = true
-		}
-		Button(.localized("Import from URL"), systemImage: "globe") {
-			_isDownloadingPresenting = true
 		}
 	}
 }

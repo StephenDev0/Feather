@@ -21,15 +21,6 @@ struct TunnelView: View {
 			Section {
 				_tunnelInfo()
 				TunnelHeaderView()
-			} footer: {
-				if doesHavePairingFile {
-					Text(.localized("Seems like you've gotten your hands on your pairing file!"))
-				} else {
-					Text(.localized("No pairing file found, please import it."))
-				}
-			}
-			
-			Section {
 				Button(.localized("Import Pairing File"), systemImage: "square.and.arrow.down") {
 					_isImportingPairingPresenting = true
 				}
@@ -52,9 +43,6 @@ struct TunnelView: View {
 			NBSection(.localized("Help")) {
 				Button(.localized("Pairing File Guide"), systemImage: "questionmark.circle") {
 					UIApplication.open("https://github.com/StephenDev0/StikDebug-Guide/blob/main/pairing_file.md")
-				}
-				Button(.localized("Download StosVPN"), systemImage: "arrow.down.app") {
-					UIApplication.open("https://apps.apple.com/us/app/stosvpn/id6744003051")
 				}
 			}
 		}

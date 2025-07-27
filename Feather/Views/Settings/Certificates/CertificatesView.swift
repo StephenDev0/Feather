@@ -39,14 +39,14 @@ struct CertificatesView: View {
 				_cellButton(for: cert, at: index)
 			}
 		}
-		.navigationTitle(.localized("Certificates"))
+		.navigationTitle(.localized("Developer Certificates"))
 		.overlay {
 			if _certificates.isEmpty {
 				if #available(iOS 17, *) {
 					ContentUnavailableView {
 						Label(.localized("No Certificates"), systemImage: "questionmark.folder.fill")
 					} description: {
-						Text(.localized("Get started signing by importing your first certificate."))
+						Text(.localized("Get started signing by importing your first developer certificate."))
 					} actions: {
 						Button {
 							_isAddingPresenting = true
