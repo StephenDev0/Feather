@@ -2,7 +2,7 @@
 
 [![GitHub License](https://img.shields.io/github/license/khcrysalis/feather?color=%23C96FAD)](https://github.com/khcrysalis/feather/blob/main/LICENSE)
 
-This app allows you to install and manage applications contained in a single app, using certificate pairs and various installation techniques to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
+This app allows you to install and manage applications contained in a single app, using certificate pairs and idevice to allow apps to install to your device. This is an entirely stock application and uses built-in features to be able to do this!
 
 ## Acknowledgements
 
